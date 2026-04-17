@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Churn Prediction</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+        }
+
+        /* Full screen wrapper */
+        .page {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .status {
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .status.churn {
+            color: #ff6b6b;
+        }
+
+        .status.stay {
+            color: #4cd137;
+        }
+
+        .probability {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .recommendations {
+            background: rgba(0,0,0,0.35);
+            padding: 25px;
+            border-radius: 14px;
+        }
+
+        .recommendations h3 {
+            color: #00c6ff;
+            margin-bottom: 15px;
+        }
+
+        .recommendations ul {
+            padding-left: 20px;
+        }
+
+        .recommendations li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .home {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #00c6ff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .home:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="page">
+    <div class="container">
+
+        <h1>Prediction Result</h1>
+
+        <div class="status {% if churn == 1 %}churn{% else %}stay{% endif %}">
+            {% if churn == 1 %}
+                ⚠️ Will Churn
+            {% else %}
+                ✅ Will Stay
+            {% endif %}
+        </div>
+
+        <div class="probability">
+            Churn Probability: <b>{{ probability }}%</b>
+        </div>
+
+        <div class="recommendations">
+    <h3>Retention Recommendations</h3>
+    <p>{{ retention }}</p>
+</div>
+
+
+        <a class="home" href="/">🏠 Go Home</a>
+
+    </div>
+</div>
+</body>
+</html>
